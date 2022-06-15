@@ -9,11 +9,10 @@ void missingElementUnsortedArray(int A[], int H[], int l, int h, int n){
      }   
      for(int i = l; i <h; i++){
         if(H[i] == 0){
-         cout << "Element missing " << i << endl;
+         cout << "Element missing  " << i << endl;
         }
      }
 }
-   
 // Checking for missing element in an arrayf
 void missingElement(int A[], int l, int h, int n){
     int diff = l-0;
@@ -50,6 +49,41 @@ void missingElement(int A[], int l, int h, int n){
   }
  }
 
+
+
+
+ // counting duplicated in two loops
+
+ void duplicateUnsortedEl(int A[], int n){
+  int count = 0;
+  for(int i = 0; i< n-1; i++){
+   count = 1;
+   if(A[i] != -1){
+    for(int j = i+1; j < n; j++){
+        if(A[i] == A[j]){
+           count++;
+           A[j] = -1;
+        } 
+    }
+   }
+    if(count > 1){ 
+         cout << A[i] << "  "<< count << endl;
+    }
+  }
+ }
+
+// find a pair with sum k (a+b  = k)
+
+void findPairSum(int A[], int n, int sum){
+  for(int i = 0; i < n-1; i++){
+      for(int k = i+1; k < n; k++){
+          if(A[i] + A[k] == sum){
+             cout << A[i]  << " + " << A[k] <<  " Sum is " << sum << endl; 
+           }
+       }
+  }
+}
+
 int main(){
     int A[] ={6,7,8,9,11,12,15,16,17,18,19,23};
     int size = sizeof(A) / sizeof(int);
@@ -68,6 +102,13 @@ int main(){
 
     cout << "======================================" << endl << endl;
     countDuplicate(C, size3);
+
+
+    cout << "===============================================" << endl;
+    duplicateUnsortedEl(C, size3);
+     cout << "====================================================" << endl;
+
+     findPairSum(A, size, 20);
 
  return 0; 
 }
