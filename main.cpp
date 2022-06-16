@@ -59,14 +59,14 @@ void missingElement(int A[], int l, int h, int n){
   for(int i = 0; i< n-1; i++){
    count = 1;
    if(A[i] != -1){
-    for(int j = i+1; j < n; j++){
-        if(A[i] == A[j]){
-           count++;
-           A[j] = -1;
-        } 
-    }
+     for(int j = i+1; j < n; j++){
+         if(A[i] == A[j]){
+            count++;
+            A[j] = -1;
+         } 
+     }
    }
-    if(count > 1){ 
+   if(count > 1){ 
          cout << A[i] << "  "<< count << endl;
     }
   }
@@ -74,41 +74,58 @@ void missingElement(int A[], int l, int h, int n){
 
 // find a pair with sum k (a+b  = k)
 
-void findPairSum(int A[], int n, int sum){
-  for(int i = 0; i < n-1; i++){
-      for(int k = i+1; k < n; k++){
-          if(A[i] + A[k] == sum){
-             cout << A[i]  << " + " << A[k] <<  " Sum is " << sum << endl; 
-           }
-       }
-  }
+void findPairSum(int A[], int n, int sum){ 
+   for(int i = 0; i < n-1; i++){
+       for(int k = i+1; k < n; k++){
+           if(A[i] + A[k] == sum){
+                cout << A[i]  << " + " << A[k] <<  " Sum is " << sum << endl; 
+            }
+        }
+   } 
 }
 
+/// Done with this for now
+void minMax(int A[], int n){
+   int min = A[0];
+   int max = A[0];
+   for(int i = 1; i < n; i++){
+      if(A[i] < min){
+       min = A[i];
+      }else if(A[i] > max){
+       max = A[i];
+      }
+   }
+   cout << "Min value in list is: " << min << endl;
+   cout << "Max value in the list is " << max << endl;
+   
+}
+ 
 int main(){
-    int A[] ={6,7,8,9,11,12,15,16,17,18,19,23};
-    int size = sizeof(A) / sizeof(int);
-    cout << size << endl;
-    missingElement(A,6,23, size);
-   int B[] ={3,7,4,9,12,6,1,11,2,10, 15};
-  int size2 = sizeof(B) / sizeof(int);
-  int H[15] = {0};
-    cout << "================================" << endl << endl;
-    missingElementUnsortedArray(B, H, 1, 15, size2);
+     int A[] ={6,7,8,9,11,12,15,16,17,18,19,23};
+     int size = sizeof(A) / sizeof(int);
+     cout << size << endl;
+     missingElement(A,6,23, size);
+     int B[] ={3,7,4,9,12,6,1,11,2,10, 15};
+     int size2 = sizeof(B) / sizeof(int);
+     int H[15] = {0};
+     cout << "================================" << endl << endl;
+     missingElementUnsortedArray(B, H, 1, 15, size2);
 
-    cout << "=======================================" << endl << endl;
-    int C[] ={6,6,7,8,8,9,9,11,12,12,12,15,16,17,18,18,19,23,23};
-    int size3 = sizeof(C) / sizeof(int);
-    duplicateArr(C, size3);
+     cout << "=======================================" << endl << endl;
+     int C[] ={6,6,7,8,8,9,9,11,12,12,12,15,16,17,18,18,19,23,23};
+     int size3 = sizeof(C) / sizeof(int);
+     duplicateArr(C, size3);
 
-    cout << "======================================" << endl << endl;
-    countDuplicate(C, size3);
+     cout << "======================================" << endl << endl;
+     countDuplicate(C, size3);
 
 
-    cout << "===============================================" << endl;
-    duplicateUnsortedEl(C, size3);
+     cout << "===============================================" << endl;
+     duplicateUnsortedEl(C, size3);
      cout << "====================================================" << endl;
-
      findPairSum(A, size, 20);
+     cout <<"=============================================================" << endl;
+     minMax(B, size2);
 
- return 0; 
+  return 0; 
 }
